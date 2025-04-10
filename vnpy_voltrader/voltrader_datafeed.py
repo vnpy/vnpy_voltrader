@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from typing import Optional, Callable
+from collections.abc import Callable
 
 from icetcore import TCoreAPI, BarType
 
@@ -43,7 +43,7 @@ CHINA_TZ = ZoneInfo("Asia/Shanghai")
 class VoltraderDatafeed(BaseDatafeed):
     """咏春大师的数据服务接口"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """构造函数"""
         self.apppath: str = SETTINGS["datafeed.username"]      # 传参用的字段名
         if not self.apppath:
@@ -84,7 +84,7 @@ class VoltraderDatafeed(BaseDatafeed):
                 # 保存映射关系
                 self.symbol_name_map[symbol_id] = symbol_str
 
-    def query_bar_history(self, req: HistoryRequest, output: Callable = print) -> Optional[list[BarData]]:
+    def query_bar_history(self, req: HistoryRequest, output: Callable = print) -> list[BarData] | None:
         """查询K线数据"""
         if not self.inited:
             n: bool = self.init(output)
@@ -92,7 +92,7 @@ class VoltraderDatafeed(BaseDatafeed):
                 return []
 
         # 检查合约代码
-        name: str = self.symbol_name_map.get(req.symbol, None)
+        name: str | None = self.symbol_name_map.get(req.symbol, None)
         if not name:
             output(f"查询K线数据失败：不支持的合约代码{req.vt_symbol}")
             return []
@@ -127,7 +127,7 @@ class VoltraderDatafeed(BaseDatafeed):
             query_end: datetime = query_start + timedelta(days=1)
 
             # 发起K线查询
-            quote_history: list[dict] = self.api.getquotehistory(
+            quote_history = self.api.getquotehistory(
                 ice_interval,
                 ice_window,
                 name,
@@ -172,6 +172,6 @@ class VoltraderDatafeed(BaseDatafeed):
 
         return bars
 
-    def query_tick_history(self, req: HistoryRequest, output: Callable = print) -> Optional[list[TickData]]:
+    def query_tick_history(self, req: HistoryRequest, output: Callable = print) -> list[TickData] | None:
         """查询Tick数据（暂未支持）"""
         return []

@@ -1,19 +1,19 @@
-# VeighNa框架的咏春大师数据服务接口
+# VeighNa框架的MCTrader数据服务接口
 
 <p align="center">
   <img src ="https://vnpy.oss-cn-shanghai.aliyuncs.com/vnpy-logo.png"/>
 </p>
 
 <p align="center">
-    <img src ="https://img.shields.io/badge/version-1.0.0-blueviolet.svg"/>
+    <img src ="https://img.shields.io/badge/version-1.1.0-blueviolet.svg"/>
     <img src ="https://img.shields.io/badge/platform-windows-yellow.svg"/>
-    <img src ="https://img.shields.io/badge/python-3.10|3.11|3.12-blue.svg" />
+    <img src ="https://img.shields.io/badge/python-3.10|3.11|3.12|3.13-blue.svg" />
     <img src ="https://img.shields.io/github/license/vnpy/vnpy.svg?color=orange"/>
 </p>
 
 ## 说明
 
-基于艾杨软件咏春大师的数据服务接口，支持以下中国金融市场的K线数据：
+基于艾杨软件MCTrader的数据服务接口，支持以下中国金融市场的K线数据：
 
 * 期货和期货期权：
   * CFFEX：中国金融期货交易所
@@ -29,7 +29,7 @@
 
 ## 安装
 
-安装环境推荐基于3.9.0版本以上的【[**VeighNa Studio**](https://www.vnpy.com)】。
+安装环境推荐基于4.0.0版本以上的【[**VeighNa Studio**](https://www.vnpy.com)】。
 
 直接使用pip命令：
 
@@ -47,9 +47,9 @@ pip install .
 
 ## 使用
 
-在VeighNa中使用咏春大师数据接口时，需要在全局配置中填写以下字段信息：
+在VeighNa中使用voltrader数据接口时，需要在全局配置中填写以下字段信息：
 
 |名称|含义|必填|举例|
 |---------|----|---|---|
 |datafeed.name|名称|是|voltrader|
-|datafeed.username|咏春大师安装所在目录|是|C:/AlgoMaster2/APPs64|
+|datafeed.username|MCTrader安装所在目录|是|C:/MCTrader14/APPs|

@@ -24,4 +24,7 @@
 from .voltrader_datafeed import VoltraderDatafeed as Datafeed
 
 
-__version__ = "1.0.0"
+__all__ = ["Datafeed"]
+
+
+__version__ = "1.1.0"
